@@ -8,6 +8,10 @@ class Users::SessionsController < Devise::SessionsController
   #   super
   # end
 
+  # def after_sign_in_path_for(resource)
+  #   redirect_to users_path
+  # end
+
   # POST /resource/sign_in
   # def create
   #   super

@@ -1,7 +1,6 @@
-<h2>Sign up</h2>
+<div class = "text_style">
 
   <%= "All fields are Mandatory"%>
-
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -41,10 +40,9 @@
     <%= link_to " http://brentmark-prod.square63.net//privacy-policy/."%>
   </div>
 
-  <div class="actions", class="d-grid gap-2 col-6 mx-auto">
-    <%= f.submit "Sign up", class: "btn btn-primary" %>
-  </div>
-  
-  <% end %>
+    <div class="actions", class="d-grid gap-2 col-6 mx-auto">
+      <%= f.submit "Sign up", class: "btn btn-primary" %>
+    </div>
 
-<%= render "devise/shared/links" %>
+  <% end %>
+</div>

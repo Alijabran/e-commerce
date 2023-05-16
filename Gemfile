@@ -61,6 +61,9 @@ gem 'devise'
 
 gem 'stimulus-rails'
 
+gem 'jquery-rails'
+
+
 
 
 

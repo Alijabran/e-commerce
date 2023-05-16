@@ -1,11 +1,29 @@
 Rails.application.routes.draw do
-  # devise_for :users
-  root :to => redirect("/users/sign_in")
+  #  devise_for :users
+  # root "users#index"
+
+  # devise_scope :user do
+  #   root to: "devise/sessions#new"
+  # end
+
+  # devise_scope :user do
+  #   # root "users#index"
+  #   resources :users
+  # end
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
+
+  resources :users
+
+  root to: 'users#index'
+
+  # devise_for :users, views: {
+  #   sessions: 'users/sessions',
+  #   registrations: 'users/registrations'
+  # }
 
   # post '/users/sign_up', to: 'users#new'
 

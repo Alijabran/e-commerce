@@ -6,7 +6,6 @@ class User < ApplicationRecord
 
   validates :password, presence: true, length: { minimum: 8 }
   validate :password_complexity
-  # validate :mandatory_fields
 
   private
 
@@ -29,16 +28,5 @@ class User < ApplicationRecord
       errors.add(:password, 'must include at least one special symbol (! " ? $ % ^ & )')
     end
 
-    # def mandatory_fields
-    #   unless first_name.match?("")
-    #     errors.add(:first_name 'Mandatory fields')
-    #   end
-    #   unless last_name.match?("")
-    #     errors.add(:last_name 'Mandatory fields')
-    #   end
-    #   unless email.match?("")
-    #     errors.add(:email 'Mandatory fields')
-    #   end
-    # end
   end
 end

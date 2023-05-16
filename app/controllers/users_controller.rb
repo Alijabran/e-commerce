@@ -9,4 +9,8 @@ class UsersController < ApplicationController
   #     format.js
   #   end
 
+  def show
+    
+  end
+
 end
