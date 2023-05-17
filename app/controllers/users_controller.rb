@@ -1,16 +1,21 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: %i[edit update show destory]
   def index
+    @users = User.search(params[:search])
   end
 
-  # def new
-  #   @user = User.new # Replace with your appropriate model
+  def show; end
 
-  #   respond_to do |format|
-  #     format.js
-  #   end
+  def edit; end
 
-  def show
-    
+  def destroy
+    @user.destroy
+    redirect_to users_path, notice: 'User was successfully deleted.'
   end
+end
 
+private
+
+def set_user
+  @user = User.find(params[:id])
 end

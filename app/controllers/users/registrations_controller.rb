@@ -7,11 +7,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/sign_up
   def new
     @user = User.new
-    #build_resource
-
     respond_to do |format|
-      format.js 
-      
+      format.js
     end
   end
 

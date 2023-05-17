@@ -17,10 +17,13 @@
     background-color: #F5F7FF;
     text-align: auto;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    /* border: 2px solid black; */
+    border: 1px solid black;
     /* font-weight: bolder; */
     font-size: 20px;
     width: 50%; margin: 0 auto;
+  }
+  .table {
+    width: 100%;
   }
 
  
