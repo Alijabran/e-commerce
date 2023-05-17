@@ -1,0 +1,40 @@
+<div class = "width: 100%">
+  <div class = "text_style" style = "border: 0px solid black;">
+    <h2>User Management</h2>
+
+    <%= form_tag(users_path, method: :get, class: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search by name, email, or ID" %>
+    <%= submit_tag "Search" %>
+  <% end %>
+</div>
+
+<div class = "table-responsive">
+  <table class = "table table-striped table-bordered table-hover">
+    <thead>
+        <tr  class="table-dark">
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+        </tr>
+    </thead>
+  <tbody>
+      <% @users.each do |user| %>
+        <tr>
+            <td><%= user.full_name %>
+            <td><%= user.email %></td>
+            <td>
+            <%= link_to 'View', user_path(user) %>
+            <%= link_to 'Edit', edit_user_path(user) %>
+            <%= link_to 'Delete', user_path(user), method: :delete, data: { confirm: 'Are you sure you want to delete this user?' } %>
+            </td>
+        </tr>
+      <% end %>
+  </tbody>
+  </table>
+</div>
+
+
+
+
+
+
