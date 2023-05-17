@@ -80,6 +80,7 @@ GEM
       xpath (~> 3.2)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
+    csv (3.1.2)
     date (3.3.3)
     devise (4.9.2)
       bcrypt (~> 3.0)
@@ -266,6 +267,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)
+  csv
   devise
   jbuilder (~> 2.7)
   jquery-rails

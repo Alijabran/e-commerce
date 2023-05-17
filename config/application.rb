@@ -1,5 +1,6 @@
 require_relative "boot"
 
+require "csv"
 require 'pagy'
 
 require "rails/all"
