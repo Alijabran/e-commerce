@@ -1,5 +1,7 @@
 require_relative "boot"
 
+require 'pagy'
+
 require "rails/all"
 
 # Require the gems listed in Gemfile, including any gems
