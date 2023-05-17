@@ -4,27 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
-  validates :password, presence: true, length: { minimum: 8 }
-  validate :pass_valid
+  validates :password, presence: true, length: { minimum: 8 },
+                       format: { with: /\A(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).{8,}\z/m,
+                                 message: 'must include at least one lowercase letter, one uppercase letter, one number, and one special character' },
+                       on: :create
 
   def full_name
     "#{first_name} #{last_name}"
-  end
-
-  private
-
-  def pass_valid
-    return if password.blank?
-
-    errors.add(:password, 'must include at least one uppercase letter') unless password.match?(/[A-Z]/)
-
-    errors.add(:password, 'must include at least one lowercase letter') unless password.match?(/[a-z]/)
-
-    errors.add(:password, 'must include at least one number') unless password.match?(/\d/)
-
-    return if password.match?(/[!?"$%^&)]/)
-
-    errors.add(:password, 'must include at least one special symbol (! " ? $ % ^ & )')
   end
 
   def self.search(search)

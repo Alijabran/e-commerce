@@ -13,17 +13,17 @@
   </head>
 
   <body>
-
-    <div class = "text_style">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-        <%= render "layouts/header" %>
+    <%= render "layouts/header" %>
+      <div class = "text_style">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>    
         <%= yield %>
         <%if  user_signed_in? %>
           logged in as <strong> <%=current_user.email %></strong>
           <%= link_to "Edit", edit_user_registration_path%>
-          <%= link_to "Delete", destroy_user_session_path, method: :delete %>
+          <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
         <%end%>
-    </div>
+      </div>
+    <%= render "layouts/footer" %>
   </body>
 </html>

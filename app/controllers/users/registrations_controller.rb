@@ -7,11 +7,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/sign_up
   def new
     @user = User.new
-    respond_to do |format|
-      format.js
-    end
+    respond_to(&:js)
   end
-
   # POST /resource
   # def create
   #   super
@@ -22,7 +19,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # PUT /resource
+  # # PUT /resource
   # def update
   #   super
   # end

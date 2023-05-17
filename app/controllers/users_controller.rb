@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[edit update show destory]
+  before_action :set_user, only: %i[edit update show destroy]
+
   def index
     @users = User.search(params[:search])
   end
@@ -8,14 +9,26 @@ class UsersController < ApplicationController
 
   def edit; end
 
+  def update
+    if @user.update(user_params)
+      redirect_to root_path
+    else
+      redirect_to edit_user_path, notice: 'User not updated'
+    end
+  end
+
   def destroy
     @user.destroy
-    redirect_to users_path, notice: 'User was successfully deleted.'
+    redirect_to root_path, notice: 'User was successfully deleted.'
   end
-end
 
-private
+  private
 
-def set_user
-  @user = User.find(params[:id])
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :email, :password)
+  end
+
+  def set_user
+    @user = User.find(params[:id])
+  end
 end

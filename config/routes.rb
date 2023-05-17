@@ -6,5 +6,6 @@ Rails.application.routes.draw do
 
   resources :users
   root to: 'users#index'
+  patch '/users/:id', to: 'users#update', as: 'update_user'
   
 end

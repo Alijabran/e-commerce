@@ -1,56 +1,41 @@
-<div class = "text_style">
-<h2>Edit</h2>
-  <%= "All fields are Mandatory"%>
-  <%= form_with(model: @user, url: edit_user_session_path) do |f| %>
+<div class = "text_style" style = "border: 0">
+  <h2>Edit</h2>
+    <%= "All fields are Mandatory"%>
+      <%= form_with(model: @user, url: update_user_path, method: :patch ) do |f| %>
 
-    <div class="field">
-      <%= f.label :first_name %><br />
-      <%= f.text_field :first_name, required: true,  autofocus: true %>
-    </div>
+        <div class="field">
+          <%= f.label :first_name %><br />
+          <%= f.text_field :first_name, required: true,  autofocus: true %>
+        </div>
 
-    <div class="field">
-      <%= f.label :last_name %><br />
-      <%= f.text_field :last_name, required: true %>
-    </div>
+        <div class="field">
+          <%= f.label :last_name %><br />
+          <%= f.text_field :last_name, required: true %>
+        </div>
 
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autocomplete: "email", required: true %>
-    </div>
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autocomplete: "email", required: true %>
+        </div>
 
-    <div class="field">
-      <%= f.label :password %>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password", required: false %>
-    </div>
+        <div class="field">
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password", required: true %>
+        </div>
 
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", required: false %>
-    </div>
+        <div class="field">
+          <%="Your personal data will be used to support your experience throughout this website,"%> 
+          <br>
+          <%= "to manage access to your account, and for other purposes described in our"%>
+          <br>
+          <%= link_to " http://brentmark-prod.square63.net//privacy-policy/."%>
+        </div>
 
-    <div class="field">
-      <%= f.label :current_password %><br />
-      <%= f.password_field :current_password, autocomplete: "off" %>
-    </div>
-
-    <div class="field">
-      <%="Your personal data will be used to support your experience throughout this website,"%> 
-      <br>
-      <%= "to manage access to your account, and for other purposes described in our"%>
-      <br>
-      <%= link_to " http://brentmark-prod.square63.net//privacy-policy/."%>
-    </div>
-
-    <div class="actions", class="d-grid gap-2 col-6 mx-auto">
-      <%= f.submit "Sign up", class: "btn btn-primary" %>
-    </div>
-
-  <% end %>
+        <div class="actions", class="d-grid gap-2 col-6 mx-auto">
+          <%= f.submit "Update",  class: "btn btn-secondary" %>
+        </div>
+      <% end %>
 </div>
-
-
-
-
