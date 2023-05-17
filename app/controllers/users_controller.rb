@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[edit update show destroy]
 
   def index
-    @users = User.search(params[:search])
+    @pagy, @users = pagy(User.search(params[:search]))
   end
 
   def show; end
