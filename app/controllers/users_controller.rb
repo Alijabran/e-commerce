@@ -3,10 +3,6 @@ class UsersController < ApplicationController
 
   def index
     @pagy, @users = pagy(User.search(params[:search]))
-    respond_to do |format|
-      format.html
-      format.csv { send_data @users.to_csv }
-    end
   end
 
   def show; end
@@ -24,6 +20,15 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     redirect_to root_path, notice: 'User was successfully deleted.'
+  end
+
+  def export
+    @users = User.all
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @users.to_csv }
+    end
   end
 
   private
