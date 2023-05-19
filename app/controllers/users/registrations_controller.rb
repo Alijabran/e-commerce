@@ -26,7 +26,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # DELETE /resource
   # def destroy
-  #   super
+  #   @user = User.find(params[:id])
+  #   respond_to(&:js)
   # end
 
   # GET /resource/cancel
