@@ -4,8 +4,16 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  resources :users
   root to: 'users#index'
-  patch '/users/:id', to: 'users#update', as: 'update_user'
-  
+
+    resources :users do 
+      member do 
+        patch :update
+      end 
+
+      collection do
+        get :export
+      end
+    end
+
 end

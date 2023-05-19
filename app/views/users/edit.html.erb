@@ -1,7 +1,7 @@
 <div class = "text_style" style = "border: 0">
   <h2>Edit</h2>
     <%= "All fields are Mandatory"%>
-      <%= form_with(model: @user, url: update_user_path, method: :patch ) do |f| %>
+      <%= form_with(model: @user, url: user_path, method: :patch ) do |f| %>
 
         <div class="field">
           <%= f.label :first_name %><br />
