@@ -18,29 +18,29 @@
           </tr>
       </thead>
       <tbody>
-          <div>
-            <% @users.each do |user| %>
-              <tr>
-                  <td><%= user.full_name %>
-                  <td><%= user.email %></td>
-                  <td>
-                  <%= link_to 'View', user_path(user) %>
-                  <%= link_to 'Edit', edit_user_path(user) %>
-                  <div data-controller = 'modal' id='open-delete-modal'>
-                    <%= link_to 'Delete', 'javascript:void(0)', data: { user_id: user.id, action: 'click->modal#open' } %>
-                  </div>
-                  </td>
-              </tr>
-            <% end %>
-          </div>
+        <div>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= user.full_name %>
+              <td><%= user.email %></td>
+              <td>
+              <%= link_to 'View', user_path(user) %>
+              <%= link_to 'Edit', edit_user_path(user) %>
+              <div data-controller = 'modal' id='open-delete-modal'>
+              <%= link_to 'Delete', 'javascript:void(0)', data: { user_id: user.id, action: 'click->modal#open' } %>
+              </div>
+              </td>
+            </tr>
+          <% end %>
+        </div>
       </tbody>
     </table>
   </div>
 </div>
 <%== pagy_bootstrap_nav(@pagy) %>
 <%= link_to "Export CSV", export_users_path(format: :csv)%>
+  <%= link_to "Invite User", new_user_invitation_path, class: "#{'font-weight-bold' if current_page?(new_user_invitation_path)}" %> 
 <%= render "delete_modal" %>
-  
 
 
 

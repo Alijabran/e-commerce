@@ -1,14 +1,13 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
+  devise :invitable, :database_authenticatable, :registerable,
+         :recoverable, :rememberable
 
   validates :password, presence: true, length: { minimum: 8 },
                        format: { with: /\A(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).{8,}\z/m,
                                  message: 'must include at least one lowercase letter, one uppercase letter, one number, and one special character' },
                        on: :create
-
   def full_name
     "#{first_name} #{last_name}"
   end
@@ -23,6 +22,7 @@ class User < ApplicationRecord
       end
     end
   end
+  
 
   def self.search(search)
     if search
@@ -31,4 +31,5 @@ class User < ApplicationRecord
       all
     end
   end
+  
 end
