@@ -1,12 +1,11 @@
 
 <div class = "text_style" style = "border: 0px solid black;">
-  <h3>Hello: </h3>
+  <%= button_to "Back", root_path , method: :get, class: "btn btn-primary"%>
+  <h3>User Profile </h3>
     <strong>First Name: </strong>
-        <%= @user.first_name %><br />
+      <%= @user.first_name %><br />
     <strong>Last Name: </strong>
-        <%= @user.last_name %><br />
+      <%= @user.last_name %><br />
     <strong>Email: </strong>
-        <%= @user.email %>
-
-    <%= button_to "Back", root_path , method: :get, class: "btn btn-primary"%>
+      <%= @user.email %>
 </div>

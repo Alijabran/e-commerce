@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     invitations: 'users/invitations'
   }
 
+  resources :invitations, only: %i[new create]
+  resources :products
+
   root to: 'users#index'
 
     resources :users do 
