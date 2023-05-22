@@ -1,0 +1,18 @@
+<div class="modal fade" data-controller='modal' id="myModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title text-center" style = " text-align left">Delete</h4>
+        <button type="button" class="close btn btn-dark" data-action="click->modal#close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Are You Sure!!</p>
+      </div>
+      <div class="modal-footer ">
+        <button type="button" class="btn btn-primary" data-action="click->modal#close">Close</button>
+        <%= link_to "Delete", user_path(1), method: :delete, id: 'deleteLink', class: "btn btn-danger"  %>
+      </div>
+    </div>
+  </div>
+</div>
+  

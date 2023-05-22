@@ -1,11 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[edit update show destroy]
-  before_action :require_admin, only: %i[edit destroy]
+  before_action :require_admin, only: %i[edit show destroy]
 
   def index
     @sort_column = params[:sort_column] || 'email' || 'first_name'
     @sort_direction = params[:sort_direction] || 'asc'
-
     @pagy, @users = pagy(User.search(params[:search]).order("#{@sort_column} #{@sort_direction}"))
   end
 
@@ -22,8 +21,11 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
-    redirect_to root_path, notice: 'User was successfully deleted.'
+    if @user.destroy
+      redirect_to root_path, notice: 'User was successfully deleted.'
+    else
+      redirect_to root_path, notice: 'User not deleted'
+    end
   end
 
   def export
@@ -33,6 +35,7 @@ class UsersController < ApplicationController
       format.csv { send_data @users.to_csv }
     end
   end
+
 
   private
 

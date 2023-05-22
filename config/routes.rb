@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
     sessions: 'users/sessions',
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
+    invitations: 'users/invitations'
   }
+
+  resources :invitations, only: %i[new create]
+  resources :products
 
   root to: 'users#index'
 
