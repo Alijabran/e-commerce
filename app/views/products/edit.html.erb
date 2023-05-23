@@ -1,0 +1,31 @@
+<h3>Edit</h3>
+
+<div class = "width: 100%" style = "pb-1 mb-2 mt-2 ">
+  <%= form_for @product, url: {action: "update"} do |form| %>
+    <div class = "row">
+    <div class = "col">
+      <%= form.label :title %>
+      <%= form.text_field :title %>
+    </div>
+
+    <div class = "col">
+      <%= form.label :price %>
+      <%= form.number_field :price %>
+    </div>
+    </div><br />
+
+    <div>
+      <%= form.label :status %>
+      <%= form.select :status, ['publish', 'draft', 'pending'] %>
+    </div><br />
+
+    <div class = "table-responsive">
+      <%= form.label :description %><br />
+      <%= form.text_area :description, class: "table-responsive"%>
+    </div>
+
+    <div class = "text-end">
+      <%= form.submit 'Update', class: "btn btn-primary"%>
+    </div>
+  <% end %>
+</div>
