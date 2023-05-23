@@ -6,7 +6,6 @@ export default class extends Controller {
     deleteLink.href = deleteLink.href.replace(/\d+(?!.*\d+)/, event.target.dataset.userId);
     $('#myModal').modal('show');
   }
-byebug
   close(){
     $('#myModal').modal('hide');
   }

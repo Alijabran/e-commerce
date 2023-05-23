@@ -1,6 +1,7 @@
 
 <div class = " ml-2 mt-2" style = "border: 0;padding-left:50px;">
   <%= form_for @product, action: {method: :create} do |form| %>
+
     <div class = "row">
       <div class = "col-4">
         <%= form.label :title %>
@@ -11,17 +12,23 @@
         <%= form.number_field :price %>
       </div>
     </div><br />
+
     <div class = "row">
       <div class = "col-4">
         <%= form.label :status %>
         <%= form.select :status, ['publish', 'draft', 'pending'] %>
       </div>
-
       <div class = "col-4">
         <%= form.label :description %>
         <%= form.text_area :description %>
       </div>
     </div><br />
+
+    <div class = "col-4">
+      <%= form.label :category_id %>
+      <%= form.collection_select :category_id, Category.all, :id, :name %>
+    </div>
+
     <div style="text-align:center;padding-left:110px;">
       <%= form.submit class: "btn btn-success"%>
     </div>

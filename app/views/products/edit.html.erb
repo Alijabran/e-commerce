@@ -1,30 +1,37 @@
-<h3>Edit</h3>
-
-<div class = "width: 100%" style = "pb-1 mb-2 mt-2 ">
+<div class = " ml-2 mt-2" style = "border: 0;padding-left:50px;">
+  <h3>Edit</h3>
   <%= form_for @product, url: {action: "update"} do |form| %>
     <div class = "row">
-    <div class = "col">
-      <%= form.label :title %>
-      <%= form.text_field :title %>
-    </div>
+      <div class = "col">
+        <%= form.label :title %>
+        <%= form.text_field :title %>
+      </div>
 
-    <div class = "col">
-      <%= form.label :price %>
-      <%= form.number_field :price %>
-    </div>
+      <div class = "col">
+        <%= form.label :price %>
+        <%= form.number_field :price %>
+      </div>
     </div><br />
 
     <div>
       <%= form.label :status %>
       <%= form.select :status, ['publish', 'draft', 'pending'] %>
     </div><br />
+    
+    <div class = "row">
+      <div class = "col-6">
+        <%= form.label :description %><br />
+        <%= form.text_area :description, class: "table-responsive"%>
+      </div>
 
-    <div class = "table-responsive">
-      <%= form.label :description %><br />
-      <%= form.text_area :description, class: "table-responsive"%>
+      <div class = "col-4">
+        <%= form.label :category_id %>
+        <%= form.collection_select :category_id, Category.all, :id, :name %>
+      </div>
     </div>
 
-    <div class = "text-end">
+
+    <div class = "text-end" style = "padding-right:30px">
       <%= form.submit 'Update', class: "btn btn-primary"%>
     </div>
   <% end %>

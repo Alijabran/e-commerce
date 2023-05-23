@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+  belongs_to :category
+
   def self.search(search)
     if search
       where('title like :search OR id = :id', search: "%#{search}%", id: search.to_i)
