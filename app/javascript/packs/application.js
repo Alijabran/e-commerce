@@ -5,6 +5,7 @@
 // that code so it'll be compiled.
 
 //= require jquery3
+//= require modal_controller
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"

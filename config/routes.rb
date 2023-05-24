@@ -25,5 +25,14 @@ Rails.application.routes.draw do
     end
     
     resources :categories 
+    
+    resources :coupons do
+      collection do
+        get :export
+      end
 
+      member do
+        post :product_coupon
+      end
+    end
 end

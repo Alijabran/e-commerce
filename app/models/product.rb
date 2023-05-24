@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
   belongs_to :category
+  belongs_to :coupon, optional: true
 
   def self.search(search)
     if search
@@ -14,8 +15,8 @@ class Product < ApplicationRecord
     CSV.generate(headers: true) do |csv|
       csv << attributes
 
-      all.each do |user|
-        csv << user.attributes.values_at(*attributes)
+      all.each do |product|
+        csv << product.attributes.values_at(*attributes)
       end
     end
   end
