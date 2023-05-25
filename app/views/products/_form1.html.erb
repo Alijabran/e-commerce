@@ -1,0 +1,29 @@
+
+<div class = " ml-2 mt-2" style = "border: 0;padding-left:50px;">
+  <%= form_for @product, action: {method: :create} do |form| %>
+    <div class = "row">
+      <div class = "col-4">
+        <%= form.label :title %>
+        <%= form.text_field :title %>
+      </div>
+      <div class = "col-4">
+        <%= form.label :price %>
+        <%= form.number_field :price %>
+      </div>
+    </div><br />
+    <div class = "row">
+      <div class = "col-4">
+        <%= form.label :status %>
+        <%= form.select :status, ['publish', 'draft', 'pending'] %>
+      </div>
+
+      <div class = "col-4">
+        <%= form.label :description %>
+        <%= form.text_area :description %>
+      </div>
+    </div><br />
+    <div style="text-align:center;padding-left:110px;">
+      <%= form.submit class: "btn btn-success"%>
+    </div>
+  <% end %>
+</div>

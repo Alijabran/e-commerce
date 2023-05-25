@@ -16,12 +16,16 @@
       <div class = "text_style">
         <p class="notice"><%= notice %></p>
         <p class="alert"><%= alert %></p>    
-        <%= yield %>
-        <%if  user_signed_in? %>
-          logged in as <strong> <%=current_user.email %></strong>
-          <%= link_to "Edit", edit_user_registration_path%>
-          <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
-        <%end%>
+        <div style = "text-align:right;padding-right:30px;" >
+          <%= button_to "Back", root_path , method: :get, class: "btn btn-warning"%>
+        </div>
+          <%= yield %><br />
+          <%if  user_signed_in? %>
+            logged in as <strong> <%=current_user.email %></strong>
+          <%end%>
+        <div class = "text-end" style = "text-align:right;padding-right:30px;padding-bottom:10px;">
+        <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-dark" %>
+        </div>
       </div>
     <%= render "layouts/footer" %>
   </body>
