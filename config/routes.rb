@@ -25,5 +25,10 @@ Rails.application.routes.draw do
     end
     
     resources :categories 
-
+    
+    resources :coupons do
+      collection do
+        get :export
+      end
+    end
 end

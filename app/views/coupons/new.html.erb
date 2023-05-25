@@ -1,0 +1,25 @@
+<div class = " ml-2 mt-2" style = "border: 0;padding-left:50px;">
+
+  <h1>New Coupon</h1>
+  <%= form_with(model: @coupon, url: coupons_path) do |form| %>
+    <div class = "row">
+      <div class = col-5>
+        <%= form.label :name%>
+        <%= form.text_field :name, placeholder: 'Coupon Name' %>
+      </div>
+      <div class = "col-5">
+        <%= form.label :discount_value%>
+        <%= form.text_field :discount_value, placeholder: 'Discount Value' %>
+      </div>
+    </div>
+    <div class = 'col-4'>
+      <%= form.label :product  %>
+      <%= form.collection_select :product_ids, Product.all, :id, :title, {}, multiple: true %>
+    </div>
+
+    <div style = "text-align:right;padding-right:30px;">
+      <%= form.submit 'Create Coupon', class: 'btn btn-secondary' %>
+    </div>
+  <% end %>
+  
+</div>

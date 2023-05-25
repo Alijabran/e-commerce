@@ -19,26 +19,37 @@
       </thead>
       <tbody>
         <% @products.each do |product| %>
-          <tr>
-              <td><%= product.title %></td>
-              <td><%= product.price %></td>
-              <td><%= product.id %></td>
-              <td><%=product.category && product.category.name %></td>
-              <td>
-              <%= link_to 'View', product_path(product) %>
-              <%= link_to 'Edit', edit_product_path(product) %>
-              <%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' } %>
-              </td>
+        <tr>
+            <td><%= product.title %></td>
+            <td><%= product.price %></td>
+            <td><%= product.id %></td>
+            <td><%=product.category && product.category.name %></td>
+            <td>
+              <div class = 'row'>
+                <div class = 'col-2'>
+                  <%= link_to 'View', product_path(product), class: 'btn btn-info' %>
+                </div>
+
+                <div class = 'col-2'>
+                  <%= link_to 'Edit', edit_product_path(product), class: 'btn btn-warning' %>
+                </div>
+                
+                <div class = 'col-2'>
+                  <%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+                </div>
+              </div>
+            </td>
           </tr>
         <% end %>
       </tbody>
     </table>
     <%== pagy_bootstrap_nav(@pagy)%>
     <%= link_to "Export CSV", export_products_path(format: :csv), class: "btn btn-primary"%>
-    <div style = "text-align:right;padding-right:30px;">
+    <div style = "text-align:right;padding-right:30px;padding-bottom:20px">
       <%= link_to "Add New Product", new_product_path, class: 'btn btn-secondary'%>
       <%= link_to "Users", users_path, class: 'btn btn-secondary'%>
       <%= link_to "Category", categories_path, class: 'btn btn-secondary'%>
+      <%= link_to "Coupons", coupons_path, class: 'btn btn-secondary'%>
     </div>
   </div>
 </div>
