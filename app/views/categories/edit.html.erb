@@ -1,0 +1,8 @@
+<div class = " ml-2 mt-2" style = "border: 0;padding-left:50px;">
+  <h1>Edit Category</h1>
+  
+  <%= form_for @category, url: {action: 'update'}  do |form| %>
+    <%= form.text_field :name, placeholder: 'Category Name' %>
+    <%= form.submit 'Update Category', class: 'btn btn-info' %>
+  <% end %>
+</div>

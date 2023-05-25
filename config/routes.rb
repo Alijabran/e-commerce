@@ -23,5 +23,7 @@ Rails.application.routes.draw do
         get :export
       end
     end
+    
+    resources :categories 
 
 end
