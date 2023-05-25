@@ -30,9 +30,5 @@ Rails.application.routes.draw do
       collection do
         get :export
       end
-
-      member do
-        post :product_coupon
-      end
     end
 end

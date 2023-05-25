@@ -4,6 +4,6 @@ class AddConstraintToCoupon < ActiveRecord::Migration[6.1]
   end
 
   def down
-    execute 'ALTER TABLE books DROP CONSTRAINT price_check'
+    execute 'ALTER TABLE coupons DROP CONSTRAINT discount_check'
   end
 end
