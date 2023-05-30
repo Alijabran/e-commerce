@@ -1,4 +1,5 @@
-<div class = "width: 100%">
+<%if@user == current_user || current_user&.admin?%>
+<div class = "width: 95%">
     <div class = "text_style" style = "border: 0px solid black;">
       <h2>Product Listing</h2>
       <%= form_tag(products_path, method: :get, class: "search-form") do %>
@@ -13,7 +14,6 @@
           <th><%=link_to "Name", {sort_column: 'title', sort_direction: sort_direction_for('title')}%></th>
           <th><%= link_to "Value", {sort_column: 'price', sort_direction: sort_direction_for('price')}%></th>
           <th>ID</th>
-          <th>Category</th>
           <th>Actions</th>
           </tr>
       </thead>
@@ -23,7 +23,6 @@
             <td><%= product.title %></td>
             <td><%= product.price %></td>
             <td><%= product.id %></td>
-            <td><%=product.category && product.category.name %></td>
             <td>
               <div class = 'row'>
                 <div class = 'col-2'>
@@ -31,11 +30,15 @@
                 </div>
 
                 <div class = 'col-2'>
-                  <%= link_to 'Edit', edit_product_path(product), class: 'btn btn-warning' %>
+                  <%if@user == current_user || current_user&.admin?%>
+                    <%= link_to 'Edit', edit_product_path(product), class: 'btn btn-warning' %>
+                  <%end%>
                 </div>
                 
                 <div class = 'col-2'>
-                  <%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+                  <%if@user == current_user || current_user&.admin?%>
+                    <%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+                  <%end%>
                 </div>
               </div>
             </td>
@@ -53,3 +56,7 @@
     </div>
   </div>
 </div>
+<%= render 'product_listing'%>
+<%else%>
+<%= render 'product_listing'%>
+<%end%>

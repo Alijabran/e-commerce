@@ -1,42 +1,45 @@
-<div class = 'row' style = "padding:20px"> 
+<h2 style = "padding-left:30px">Products</h2>
+<div class = 'row row-cols-1 row-cols-md-3 g-3' style = "padding:20px"> 
   <% @products.each do |product| %>
-    <div class="row-4 col-3" style = "padding:10px">
-      <div class="card h-100">
+    <div class="shadow-lg ">
+      <div class="col mb-4" style = "padding:10px">
+        <div class="card h-100">
 
-        <div class="card-img-top img-responsive" >
-          <%if product.images.attached?%>
-            <% product.images.each do |image| %>
-              <%= image_tag(image.variant(resize: '340x340'), class: 'image-responsive') %>
-            <% end %>
-          <%else%>
-            <p>Image Not Available</p>
-          <%end%>
-        </div>
+          <div class="card-img-top " >
+            <%if product.images.attached?%>
+              <% product.images.each do |image| %>
+                <%= image_tag(image.variant(resize: '460x460'), class: 'card-img-top') %>
+              <% end %>
+            <%else%>
+                <%= image_tag('image_not_available', :size => "297x297", class: 'card-img-top') %>
+            <%end%>
+          </div>
 
-        <div class="card-body">
-          <h6 class="card-title"><%= product.title %></h6>
-          <p class="card-text"><%= product.description %></p>
-          <p class="card-text">Price: <%= product.price %></p>
-        </div>
+          <div class="card-body">
+            <h6 class="card-title"><%= product.title %></h6>
+            <p class="card-text"><%= product.description %></p>
+            <p class="card-text">Price: <%= product.price %></p>
+          </div>
 
-        <div class="card-footer text-body-secondary">
-              <div class = 'row'>
-                <div class = 'col-3'>
-                  <%= link_to 'View', product_path(product), class: 'btn btn-info' %>
-                </div>
+          <div class="card-footer text-body-secondary">
+            <div class = 'row'>
+              <div class = 'col-3'>
+                <%= link_to 'View', product_path(product), class: 'btn btn-info' %>
+              </div>
 
-                <div class = 'col-3'>
-                  <%if@user == current_user || current_user&.admin?%>
-                    <%= link_to 'Edit', edit_product_path(product), class: 'btn btn-warning' %>
-                  <%end%>
-                </div>
-                
-                <div class = 'col-3'>
-                  <%if@user == current_user || current_user&.admin?%>
-                    <%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-                  <%end%>
-                </div>
-                </div>
+              <div class = 'col-3'>
+                <%if@user == current_user || current_user&.admin?%>
+                  <%= link_to 'Edit', edit_product_path(product), class: 'btn btn-warning' %>
+                <%end%>
+              </div>
+              
+              <div class = 'col-3'>
+                <%if@user == current_user || current_user&.admin?%>
+                  <%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+                <%end%>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

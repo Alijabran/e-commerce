@@ -3,7 +3,7 @@ class CouponsController < ApplicationController
   after_action :product_coupon, only: :create
 
   def index
-    @sort_column = params[:sort_column] || 'id' || 'name'
+    @sort_column = params[:sort_column] || 'id'
     @sort_direction = params[:sort_direction] || 'asc'
     @pagy,  @coupons = pagy(Coupon.search(params[:search]).order("#{@sort_column} #{@sort_direction}"))
   end

@@ -30,6 +30,9 @@
         <%= form.label :description %>
         <%= form.text_area :description %>
       </div>
+      <div class = "col-5" style = "text-align:right">
+        <%=form.file_field :images, multiple: true%>
+      </div>
     </div>
 
     <div style="text-align:center;padding-left:110px;">

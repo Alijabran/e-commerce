@@ -1,12 +1,24 @@
 
 <div class = "text_style" style = "border: 0px solid black;padding-right:30px;">
-  <h3><%=@product.title%> </h3>
-    <strong>Title </strong>
-      <%= @product.title %><br />
-    <strong>Price </strong>
-      <%= @product.price %><br />
-    <strong>Description </strong>
-      <%= @product.description %><br />
-    <strong>Status </strong>
-      <%= @product.status %>
+<div class = 'row'>
+  <div class = 'col'>
+    <h3><%=@product.title%> </h3>
+      <strong>Title </strong>
+        <%= @product.title %><br />
+      <strong>Price </strong>
+        <%= @product.price %><br />
+      <strong>Description </strong>
+        <%= @product.description %><br />
+      <strong>Status </strong>
+        <%= @product.status %>
+  </div>
+  <div class = 'col'>
+    <%if @product.images.attached?%>
+      <% @product.images.each do |image| %>
+        <%= image_tag(image.variant(resize: '500x500'), class: 'image-responsive') %>
+      <% end %>
+    <%else%>
+        <p>Image Not Available</p>
+    <%end%>
+  </div>
 </div>

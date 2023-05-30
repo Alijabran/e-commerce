@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :require_admin, only: %i[edit show destroy]
 
   def index
-    @sort_column = params[:sort_column] || 'email' || 'first_name'
+    @sort_column = params[:sort_column] || 'email'
     @sort_direction = params[:sort_direction] || 'asc'
     @pagy, @users = pagy(User.search(params[:search]).order("#{@sort_column} #{@sort_direction}"))
   end

@@ -1,11 +1,15 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[edit update show destroy]
-  before_action :authenticate_admin!
+  before_action :require_admin, only: %i[edit update destroy]
 
   def index
-    @sort_column = params[:sort_column] || 'title' || 'price'
+    @sort_column = params[:sort_column] || 'title'
     @sort_direction = params[:sort_direction] || 'asc'
-    @pagy, @products = pagy(Product.search(params[:search]).order("#{@sort_column} #{@sort_direction}"))
+    if @user == current_user || current_user.admin?
+      @pagy, @products = pagy(Product.search(params[:search]).order("#{@sort_column} #{@sort_direction}").with_attached_images)
+    else
+      @pagy, @products = pagy(Product.search(params[:search]).where(status: 'publish').order("#{@sort_column} #{@sort_direction}").with_attached_images)
+    end
   end
 
   def new
@@ -52,15 +56,15 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:title, :price, :description, :status, :category_id, :coupon_id)
+    params.require(:product).permit(:title, :price, :description, :status, :category_id, :coupon_id, images: [])
   end
 
   def set_product
     @product = Product.find(params[:id])
   end
 
-  def authenticate_admin!
-    return if current_user.admin?
+  def require_admin
+    return if @user == current_user || current_user.admin?
 
     redirect_to root_path, alert: 'You are not authorized to perform this action.'
   end

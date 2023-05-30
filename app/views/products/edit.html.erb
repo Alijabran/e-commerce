@@ -29,7 +29,9 @@
         <%= form.collection_select :category_id, Category.all, :id, :name %>
       </div>
     </div>
-
+    <div class = "col-5" style = "text-align:right">
+      <%=form.file_field :images, multiple: true%>
+    </div>
 
     <div class = "text-end" style = "padding-right:30px">
       <%= form.submit 'Update', class: "btn btn-primary"%>
