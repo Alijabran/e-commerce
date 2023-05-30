@@ -10,6 +10,8 @@ class ProductsController < ApplicationController
     else
       @pagy, @products = pagy(Product.search(params[:search]).where(status: 'publish').order("#{@sort_column} #{@sort_direction}").with_attached_images)
     end
+    @user = current_user
+    @product = Product.all
   end
 
   def new
@@ -48,7 +50,6 @@ class ProductsController < ApplicationController
   def export
     @products = Product.all
     respond_to do |format|
-      format.html
       format.csv { send_data @products.to_csv }
     end
   end

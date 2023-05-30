@@ -8,27 +8,31 @@ Rails.application.routes.draw do
 
   resources :invitations, only: %i[new create]
 
-    resources :products do 
-      collection do
-        get :export
-      end
+  resources :products do 
+    collection do
+      get :export
     end
+    resources :orders 
+  end
 
-    resources :users do 
-      member do 
-        patch :update
-      end 
+  resources :users do 
+    member do 
+      patch :update
+    end 
 
-      collection do
-        get :export
-      end
+    collection do
+      get :export
     end
-    
-    resources :categories 
-    
-    resources :coupons do
-      collection do
-        get :export
-      end
+  end
+  
+  resources :categories 
+  
+  resources :coupons do
+    collection do
+      get :export
     end
+  end
+
+  resources :orders 
+
 end
