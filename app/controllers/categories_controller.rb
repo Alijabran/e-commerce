@@ -12,9 +12,9 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-      redirect_to categories_path, notice: 'Category Created'
+      redirect_to categories_path, alert: 'Category Created'
     else
-      redirect_to new_category_path, flash: { alert: 'Category Not Created' }
+      redirect_to new_category_path, alert: 'Category Not Created'
     end
   end
 
@@ -24,17 +24,17 @@ class CategoriesController < ApplicationController
 
   def update
     if @category.update(category_params)
-      redirect_to categories_path, flash: { alert: 'Category Updated' }
+      redirect_to categories_path, alert: 'Category Updated'
     else
-      redirect_to categories_path, flash: { alert: 'Category Not Updated' }
+      redirect_to categories_path, alert: 'Category Not Updated'
     end
   end
 
   def destroy
     if @category.destroy
-      redirect_to categories_path, flash: { alert: 'Category Deleted' }
+      redirect_to categories_path, alert: 'Category Deleted'
     else
-      redirect_to categories_path, flash: { alert: 'Category Not Deleted' }
+      redirect_to categories_path, alert: 'Category Not Deleted'
     end
   end
 

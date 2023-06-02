@@ -3,7 +3,7 @@
     <div class = "text_style" style = "border: 0px solid black;">
       <h2>Product Listing</h2>
       <%= form_tag(products_path, method: :get, class: "search-form") do %>
-        <%= text_field_tag :search, params[:search], placeholder: "Search by Title or ID" %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search by Name or ID" %>
         <%= submit_tag "Search" %>
       <% end %>
     </div>
@@ -40,6 +40,13 @@
                     <%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
                   <%end%>
                 </div>
+                <div class = 'col-2'>
+                  <%= form_with(model: Order.new, url: orders_path, method: :post) do |form| %>
+                    <%= form.hidden_field :user_id, value: current_user.id %>
+                    <%= form.hidden_field :product_id, value: product.id %>
+                    <%= form.submit 'Add to Cart', class: 'btn btn-secondary' %>
+                  <% end %>
+                </div>
               </div>
             </td>
           </tr>
@@ -53,6 +60,7 @@
       <%= link_to "Users", users_path, class: 'btn btn-secondary'%>
       <%= link_to "Category", categories_path, class: 'btn btn-secondary'%>
       <%= link_to "Coupons", coupons_path, class: 'btn btn-secondary'%>
+      <%= link_to "Order", orders_path, class: 'btn btn-secondary'%>
     </div>
   </div>
 </div>

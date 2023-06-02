@@ -2,6 +2,7 @@ class Product < ApplicationRecord
   belongs_to :category
   belongs_to :coupon, optional: true
   has_many_attached :images, dependent: true
+  has_many :orders
 
   def self.search(search)
     if search
