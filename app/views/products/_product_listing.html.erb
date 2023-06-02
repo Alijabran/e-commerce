@@ -28,22 +28,24 @@
               </div>
 
               <div class = 'col-3'>
-                <%if@user == current_user || current_user&.admin?%>
+                <%if current_user.admin?%>
                   <%= link_to 'Edit', edit_product_path(product), class: 'btn btn-warning' %>
                 <%end%>
               </div>
               
               <div class = 'col-3'>
-                <%if@user == current_user || current_user&.admin?%>
+                <% if current_user.admin? %>
                   <%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
                 <%end%>
               </div>
               <div class = 'col-3'>
-                <%= form_with(model: Order.new, url: orders_path, method: :post) do |form| %>
-                  <%= form.hidden_field :user_id, value: current_user.id %>
-                  <%= form.hidden_field :product_id, value: product.id %>
-                  <%= form.submit 'Cart', class: 'btn btn-secondary' %>
-                <% end %>
+                <% if !current_user.admin? %>
+                  <%= form_with(model: Order.new, url: orders_path, method: :post) do |form| %>
+                    <%= form.hidden_field :user_id, value: current_user.id %>
+                    <%= form.hidden_field :product_id, value: product.id %>
+                    <%= form.submit 'Cart', class: 'btn btn-secondary' %>
+                  <% end %>
+                <%end%>
               </div>
             </div>
           </div>

@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   def index
     @sort_column = params[:sort_column] || 'title'
     @sort_direction = params[:sort_direction] || 'asc'
-    if @user == current_user || current_user.admin?
+    if current_user.admin?
       @pagy, @products = pagy(Product.search(params[:search]).order("#{@sort_column} #{@sort_direction}").with_attached_images)
     else
       @pagy, @products = pagy(Product.search(params[:search]).where(status: 'publish').order("#{@sort_column} #{@sort_direction}").with_attached_images)

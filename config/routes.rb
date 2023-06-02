@@ -35,4 +35,17 @@ Rails.application.routes.draw do
 
   resources :orders 
 
+  resources :checkout do 
+    collection do
+      post :create_session
+    end
+      post :expire_session
+      get :sessions
+      get :line_items
+    collection do
+      get :success
+    end
+  end
+
+
 end

@@ -30,6 +30,9 @@
               </div>
 
               <div class = 'col-2'>
+                <%if order.status != 'paid'%>
+                  <%= link_to "Checkout", create_session_checkout_index_path(order_id: order.id), class: 'btn btn-secondary', method: :post %>
+                <%end%>
               </div>
             </div>
           </td>
