@@ -88,6 +88,10 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     erubi (1.12.0)
     ffi (1.15.5)
     globalid (1.1.0)
@@ -233,6 +237,7 @@ GEM
       sprockets (>= 3.0.0)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
+    stripe (8.5.0)
     thor (1.2.2)
     tilt (2.1.0)
     timeout (0.3.2)
@@ -275,6 +280,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   csv
   devise
+  dotenv-rails
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
   jquery-rails
@@ -289,6 +295,7 @@ DEPENDENCIES
   selenium-webdriver
   spring
   stimulus-rails
+  stripe
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 4.1.0)
